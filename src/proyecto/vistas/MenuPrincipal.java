@@ -21,7 +21,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mMantenimiento = new javax.swing.JMenu();
         miAlumno = new javax.swing.JMenuItem();
+        miCurso = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        miMatricula = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -35,9 +37,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         miAlumno.setText("Alumno");
         mMantenimiento.add(miAlumno);
 
+        miCurso.setText("Curso");
+        mMantenimiento.add(miCurso);
+
         jMenuBar1.add(mMantenimiento);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Registro");
+
+        miMatricula.setText("Matrícula");
+        jMenu2.add(miMatricula);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -65,7 +74,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu mMantenimiento;
+    public javax.swing.JMenu mMantenimiento;
     public javax.swing.JMenuItem miAlumno;
+    public javax.swing.JMenuItem miCurso;
+    public javax.swing.JMenuItem miMatricula;
     // End of variables declaration//GEN-END:variables
 }

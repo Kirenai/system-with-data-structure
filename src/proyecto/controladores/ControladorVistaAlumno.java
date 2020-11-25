@@ -2,6 +2,7 @@ package proyecto.controladores;
 
 import java.awt.event.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyecto.modelos.Alumno;
 import proyecto.vistas.AlumnoVista;
@@ -17,11 +18,13 @@ public class ControladorVistaAlumno implements ActionListener {
     private void addEvents() {
         viewAlumno.btnGuardar.addActionListener(this);
         viewAlumno.btnMostrar.addActionListener(this);
+        viewAlumno.btnActualizar.addActionListener(this);
+        viewAlumno.btnEliminar.addActionListener(this);
         viewAlumno.tableAlumno.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 int rowSelected = viewAlumno.tableAlumno.rowAtPoint(e.getPoint());
-                
+
                 viewAlumno.txtCodigo.setText(viewAlumno.tableAlumno.getValueAt(rowSelected, 0).toString());
                 viewAlumno.txtNombres.setText(viewAlumno.tableAlumno.getValueAt(rowSelected, 1).toString());
                 viewAlumno.txtApellidos.setText(viewAlumno.tableAlumno.getValueAt(rowSelected, 2).toString());
@@ -29,6 +32,11 @@ public class ControladorVistaAlumno implements ActionListener {
                 viewAlumno.txtEdad.setText(viewAlumno.tableAlumno.getValueAt(rowSelected, 4).toString());
                 viewAlumno.txtCelular.setText(viewAlumno.tableAlumno.getValueAt(rowSelected, 5).toString());
                 viewAlumno.txtEstado.setText(viewAlumno.tableAlumno.getValueAt(rowSelected, 6).toString());
+
+                viewAlumno.btnActualizar.setEnabled(true);
+                viewAlumno.btnGuardar.setEnabled(false);
+                viewAlumno.txtDNI.setEnabled(false);
+                viewAlumno.btnEliminar.setEnabled(true);
             }
         });
     }
@@ -39,10 +47,33 @@ public class ControladorVistaAlumno implements ActionListener {
             try {
                 addAlumno();
             } catch (Exception ex) {
-                System.out.println(ex.getMessage());
+                JOptionPane.showMessageDialog(viewAlumno, ex.getMessage());
             }
         } else if (e.getSource() == viewAlumno.btnMostrar) {
             System.out.println(listAlumno);
+        } else if (e.getSource() == viewAlumno.btnActualizar) {
+            updateAlumno();
+            viewAlumno.btnGuardar.setEnabled(true);
+            viewAlumno.btnActualizar.setEnabled(false);
+        } else if (e.getSource() == viewAlumno.btnEliminar) {
+            try {
+                if (JOptionPane.showConfirmDialog(viewAlumno, "Desea Eliminar al alumno?") == 0) {
+                    deleteAlumno();
+                }
+                else {
+                    JOptionPane.showMessageDialog(viewAlumno, "No procede");
+                    viewAlumno.btnGuardar.setEnabled(true);
+                    viewAlumno.btnActualizar.setEnabled(false);
+                    viewAlumno.btnEliminar.setEnabled(false);
+                    clearTextFields();
+                }
+            } catch (Exception ex) {
+                clearTextFields();
+                viewAlumno.btnGuardar.setEnabled(true);
+                viewAlumno.btnActualizar.setEnabled(false);
+                viewAlumno.btnEliminar.setEnabled(false);
+                JOptionPane.showMessageDialog(viewAlumno, ex.getMessage());
+            }
         }
     }
 
@@ -61,6 +92,7 @@ public class ControladorVistaAlumno implements ActionListener {
         listAlumno.add(alumno);
 
         showDataOnTable();
+        clearTextFields();
     }
 
     private int codigoCorrelativo() {
@@ -73,6 +105,45 @@ public class ControladorVistaAlumno implements ActionListener {
 
     private boolean verificarDNI(List<Alumno> listAlumnos, String dni) {
         return listAlumnos.stream().noneMatch((alumno) -> (alumno.getDni().equals(dni)));
+    }
+
+    private void updateAlumno() {
+        int codigo = Integer.parseInt(viewAlumno.txtCodigo.getText());
+        String nombres = viewAlumno.txtNombres.getText();
+        String apellidos = viewAlumno.txtApellidos.getText();
+        String dni = viewAlumno.txtDNI.getText();
+        int edad = Integer.parseInt(viewAlumno.txtEdad.getText());
+        int celular = Integer.parseInt(viewAlumno.txtCelular.getText());
+        int estado = Integer.parseInt(viewAlumno.txtEstado.getText());
+
+        Alumno alumno = new Alumno(codigo, nombres, apellidos, dni, edad, celular, estado);
+
+        int indexAlumno = searchIndex(codigo);
+        listAlumno.set(indexAlumno, alumno);
+
+        showDataOnTable();
+        clearTextFields();
+
+        viewAlumno.txtDNI.setEnabled(true);
+        viewAlumno.btnGuardar.setEnabled(true);
+        viewAlumno.btnEliminar.setEnabled(false);
+    }
+
+    private void deleteAlumno() throws Exception {
+        int estado = Integer.parseInt(viewAlumno.txtEstado.getText());
+        if (estado == 0) {
+            int indexAlumno = searchIndex(Integer.parseInt(viewAlumno.txtCodigo.getText()));
+            listAlumno.remove(indexAlumno);
+
+            showDataOnTable();
+            clearTextFields();
+
+            viewAlumno.btnEliminar.setEnabled(false);
+            viewAlumno.btnActualizar.setEnabled(false);
+
+        } else {
+            throw new Exception("Solo se puede eliminar alumnos en el estado registrado (0)");
+        }
     }
 
     public void showDataOnTable() {
@@ -96,6 +167,32 @@ public class ControladorVistaAlumno implements ActionListener {
             }
         }
         viewAlumno.tableAlumno.setModel(newModel);
+    }
+
+    private int searchIndex(int codigo) {
+        int index = -1;
+        int bound = listAlumno.size();
+        for (int userInd = 0; userInd < bound; userInd++) {
+            if (listAlumno.get(userInd).getCodAlumno() == codigo) {
+                index = userInd;
+                break;
+            }
+        }
+        return index;
+    }
+
+    private void clearTextFields() {
+        viewAlumno.txtCodigo.setText("");
+        viewAlumno.txtNombres.setText("");
+        viewAlumno.txtApellidos.setText("");
+        viewAlumno.txtDNI.setText("");
+        viewAlumno.txtEdad.setText("");
+        viewAlumno.txtCelular.setText("");
+        viewAlumno.txtEstado.setText("");
+    }
+
+    public static List<Alumno> getListAlumno() {
+        return listAlumno;
     }
 
     private final AlumnoVista viewAlumno;
