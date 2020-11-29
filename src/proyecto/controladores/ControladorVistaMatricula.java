@@ -185,15 +185,6 @@ public class ControladorVistaMatricula implements ActionListener {
         return student.getEstado() != 2;
     }
 
-    //Muestra los códigos de los alumnos de la fake database
-    public void showDataAlumnoOnJComboBox() {
-        DefaultComboBoxModel<Integer> modelComboBox = new DefaultComboBoxModel<>();
-        for (Alumno alumno : ControladorVistaAlumno.getListAlumno()) {
-            modelComboBox.addElement(alumno.getCodAlumno());
-        }
-        viewRegistration.jcbCodAlumno.setModel(modelComboBox);
-    }
-
     //genera con formato el fecha actual
     private String getCurrentDate() {
         SimpleDateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");

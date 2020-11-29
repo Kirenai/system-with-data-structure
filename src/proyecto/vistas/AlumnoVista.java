@@ -32,7 +32,6 @@ public class AlumnoVista extends javax.swing.JFrame {
         txtApellidos = new javax.swing.JTextField();
         txtDNI = new javax.swing.JTextField();
         txtEdad = new javax.swing.JTextField();
-        btnMostrar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtEstado = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
@@ -73,9 +72,6 @@ public class AlumnoVista extends javax.swing.JFrame {
         jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 145, 110, -1));
         jPanel1.add(txtDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 185, 110, -1));
         jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 225, 110, -1));
-
-        btnMostrar.setText("Mostrar");
-        jPanel1.add(btnMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, -1, -1));
 
         jLabel8.setText("Estado");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
@@ -123,7 +119,6 @@ public class AlumnoVista extends javax.swing.JFrame {
     public javax.swing.JButton btnActualizar;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnGuardar;
-    public javax.swing.JButton btnMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

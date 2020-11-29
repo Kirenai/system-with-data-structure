@@ -5,8 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import proyecto.modelos.Alumno;
@@ -40,6 +39,10 @@ public class ControladorMenuPrincipal implements ActionListener {
         mainMenu.btnCursos.addActionListener(this);
         mainMenu.btnMatriculas.addActionListener(this);
         mainMenu.btnRetiro.addActionListener(this);
+        
+        mainMenu.btnReporteAlumno.addActionListener(this);
+        mainMenu.btnReporteCurso.addActionListener(this);
+        mainMenu.btnReporteMatriculas.addActionListener(this);
     }
 
     @Override
@@ -91,7 +94,6 @@ public class ControladorMenuPrincipal implements ActionListener {
                     ControladorVistaMatricula controllerViewRegistrator
                             = new ControladorVistaMatricula(viewRegistration);
                     controllerViewRegistrator.showDataOnTable();
-                    controllerViewRegistrator.showDataAlumnoOnJComboBox();
 
                     viewRegistration.txtMatricula.setEnabled(false);
                     viewRegistration.btnActualizar.setEnabled(false);
@@ -125,6 +127,12 @@ public class ControladorMenuPrincipal implements ActionListener {
             queryEnrollment(viewQuery);
         } else if (mainMenu.btnRetiro == e.getSource()) {
             queryRetirement(viewQuery);
+        } else if (mainMenu.btnReporteAlumno == e.getSource()) {
+            reportStudents(viewQuery);
+        } else if (mainMenu.btnReporteMatriculas == e.getSource()) {
+            reportStudentsEnrolled(viewQuery);
+        } else if (mainMenu.btnReporteCurso == e.getSource()) {
+            reportEnrollments(viewQuery);
         }
     }
 
@@ -276,6 +284,81 @@ public class ControladorMenuPrincipal implements ActionListener {
             student.getEstado(), course.getCodCurso(), course.getAsignatura(),
             course.getCiclo(), course.getCreditos(), course.getHoras()));
     }
+    
+    private void reportStudents(ConsultasVista viewQuery) {
+        List<Alumno> listStudents = ControladorVistaAlumno.getListAlumno();
+        List<Alumno> listOfStudentsRegistered = listStudents
+                .stream()
+                .filter(student -> student.getEstado() == 0)
+                .collect(Collectors.toList());
+        
+        viewQuery.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewQuery.setVisible(true);
+        viewQuery.setLocationRelativeTo(null);
+        viewQuery.setTitle("Reporte Alumnos Registrados");
+        viewQuery.taConsulta.setText("");
+        viewQuery.taConsulta.append(String.format("Alumnos con matrícula vigente\n\n"));
+        listOfStudentsRegistered.forEach((student) -> {
+            viewQuery.taConsulta.append(String.format(
+                    "Código del Alumno: %s\nNombres: %s\nApellidos: %s\n"
+                    + "DNI: %s\nEdad: %s\nCelular %s\nEstado: %s\n\n", 
+                    student.getCodAlumno(),student.getNombre(), 
+                    student.getApellidos(), student.getDni(),
+                    student.getEdad(), student.getCelular(), 
+                    student.getEstado())
+            );
+        });
+    }
+
+    private void reportStudentsEnrolled(ConsultasVista viewQuery) {
+        List<Alumno> listStudents = ControladorVistaAlumno.getListAlumno();
+        List<Alumno> listOfStudentsEnrolled = listStudents
+                .stream()
+                .filter(student -> student.getEstado() == 1)
+                .collect(Collectors.toList());
+        
+        viewQuery.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewQuery.setVisible(true);
+        viewQuery.setLocationRelativeTo(null);
+        viewQuery.setTitle("Reporte Alumnos Matrículados");
+        viewQuery.taConsulta.setText("");
+        viewQuery.taConsulta.append(String.format("Alumnos con matrícula pendiente\n\n"));
+        listOfStudentsEnrolled.forEach((student) -> {
+            viewQuery.taConsulta.append(String.format(
+                    "Código del Alumno: %s\nNombres: %s\nApellidos: %s\n"
+                    + "DNI: %s\nEdad: %s\nCelular %s\nEstado: %s\n\n", 
+                    student.getCodAlumno(),student.getNombre(), 
+                    student.getApellidos(), student.getDni(),
+                    student.getEdad(), student.getCelular(), 
+                    student.getEstado())
+            );
+        });
+    }
+
+    private void reportEnrollments(ConsultasVista viewQuery) {
+        List<Matricula> listRegistration  = ControladorVistaMatricula.getListRegistration();
+        List<Alumno> listStudents = ControladorVistaAlumno.getListAlumno();
+        
+        viewQuery.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewQuery.setVisible(true);
+        viewQuery.setLocationRelativeTo(null);
+        viewQuery.setTitle("Reporte Alumnos Matrículados");
+        viewQuery.taConsulta.setText("");
+        viewQuery.taConsulta.append(String.format("Alumnos matriculados por curso\n\n"));
+        listRegistration.forEach((Matricula register) -> {
+            try {
+                Alumno student = getStudent(listStudents, register.getCodAlumno());
+                if (student.getEstado() == 1) {
+                    viewQuery.taConsulta.append(String.format(
+                        "Nombres del Alumno Matrículado en un Curso: %s\n", 
+                        student.getNombre())
+                    );
+                }
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        });
+    }
 
     private Alumno getStudent(List<Alumno> listStudents, int queryStudent) throws Exception {
         for (Alumno student : listStudents) {
@@ -303,7 +386,7 @@ public class ControladorMenuPrincipal implements ActionListener {
                 return register;
             }
         }
-        throw new Exception("No existe el Matrícula");
+        throw new Exception("No existe la Matrícula");
     }
     
     private Retiro getRetirement(List<Retiro> listRetirements, 
@@ -313,7 +396,7 @@ public class ControladorMenuPrincipal implements ActionListener {
                 return retirement;
             }
         }
-        throw new Exception("No existe el Matrícula");
+        throw new Exception("No existe el Retiro");
     }
 
     private Curso getCourseOfStudent(Alumno student,

@@ -6,9 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import proyecto.modelos.Curso;
@@ -27,7 +25,6 @@ public class ControladorVistaCurso implements ActionListener {
         viewCourse.btnGuardar.addActionListener(this);
         viewCourse.btnActualizar.addActionListener(this);
         viewCourse.btnEliminar.addActionListener(this);
-        viewCourse.btnMostrar.addActionListener(this);
         viewCourse.tableCurso.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -52,8 +49,6 @@ public class ControladorVistaCurso implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (viewCourse.btnGuardar == e.getSource()) {
             addCourse();
-        } else if (viewCourse.btnMostrar == e.getSource()) {
-            System.out.println(listCourse);
         } else if (viewCourse.btnActualizar == e.getSource()) {
             updateCourse();
         } else if (viewCourse.btnEliminar == e.getSource()) {

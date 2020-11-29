@@ -38,8 +38,6 @@ public class MatriculaVista extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableMatricula = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jcbCodAlumno = new javax.swing.JComboBox<>();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
 
@@ -81,11 +79,6 @@ public class MatriculaVista extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, 370));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 175, -1, -1));
-
-        jPanel1.add(jcbCodAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 135, -1, -1));
-
         btnActualizar.setText("Actualizar");
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, -1, -1));
 
@@ -110,14 +103,12 @@ public class MatriculaVista extends javax.swing.JFrame {
     public javax.swing.JButton btnActualizar;
     public javax.swing.JButton btnEliminar;
     public javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JComboBox<Integer> jcbCodAlumno;
     public javax.swing.JTable tableMatricula;
     public javax.swing.JTextField txtCodAlumno;
     public javax.swing.JTextField txtCodCurso;

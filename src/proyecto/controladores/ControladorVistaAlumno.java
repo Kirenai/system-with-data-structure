@@ -17,7 +17,6 @@ public class ControladorVistaAlumno implements ActionListener {
 
     private void addEvents() {
         viewAlumno.btnGuardar.addActionListener(this);
-        viewAlumno.btnMostrar.addActionListener(this);
         viewAlumno.btnActualizar.addActionListener(this);
         viewAlumno.btnEliminar.addActionListener(this);
         viewAlumno.tableAlumno.addMouseListener(new MouseAdapter() {
@@ -49,8 +48,6 @@ public class ControladorVistaAlumno implements ActionListener {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(viewAlumno, ex.getMessage());
             }
-        } else if (e.getSource() == viewAlumno.btnMostrar) {
-            System.out.println(listAlumno);
         } else if (e.getSource() == viewAlumno.btnActualizar) {
             updateAlumno();
             viewAlumno.btnGuardar.setEnabled(true);
