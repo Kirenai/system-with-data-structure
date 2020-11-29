@@ -11,14 +11,6 @@ package proyecto.modelos;
  */
 public class Alumno {
 
-    private int codAlumno;
-    private String nombres;
-    private String apellidos;
-    private String dni;
-    private int edad;
-    private int celular;
-    private int estado;
-
     public Alumno() { }
 
     public Alumno(int codAlumno, String nombres, String apellidos, String dni, 
@@ -95,6 +87,15 @@ public class Alumno {
                 ", celular=" + celular + ", estado=" + estado + '}';
     }
     
+    private int codAlumno;
+    private String nombres;
+    private String apellidos;
+    private String dni;
+    private int edad;
+    private int celular;
+    private int estado;
     
-    
+    public static final int REGISTRADO = 0;
+    public static final int MATRICULADO = 1;
+    public static final int RETIRADO = 2;
 }

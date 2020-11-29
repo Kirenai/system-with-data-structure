@@ -18,12 +18,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        txtAlumnos = new javax.swing.JTextField();
+        btnAlumnos = new javax.swing.JButton();
+        txtCursos = new javax.swing.JTextField();
+        btnCursos = new javax.swing.JButton();
+        txtMatriculas = new javax.swing.JTextField();
+        btnMatriculas = new javax.swing.JButton();
+        txtRetiros = new javax.swing.JTextField();
+        btnRetiro = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mMantenimiento = new javax.swing.JMenu();
         miAlumno = new javax.swing.JMenuItem();
         miCurso = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         miMatricula = new javax.swing.JMenuItem();
+        miRetiro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -31,6 +41,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+
+        jPanel1.setMinimumSize(new java.awt.Dimension(701, 415));
+        jPanel1.setPreferredSize(new java.awt.Dimension(701, 415));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(txtAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 120, -1));
+
+        btnAlumnos.setText("Consulta Alumnos");
+        jPanel1.add(btnAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 25, -1, -1));
+        jPanel1.add(txtCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, -1));
+
+        btnCursos.setText("Consulta Cursos");
+        jPanel1.add(btnCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 65, -1, -1));
+        jPanel1.add(txtMatriculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 120, -1));
+
+        btnMatriculas.setText("Consulta Matrículas");
+        jPanel1.add(btnMatriculas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 105, -1, -1));
+        jPanel1.add(txtRetiros, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 120, -1));
+
+        btnRetiro.setText("Consulta Retiros");
+        jPanel1.add(btnRetiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 145, -1, -1));
 
         mMantenimiento.setText("Mantenimiento");
 
@@ -47,6 +77,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         miMatricula.setText("Matrícula");
         jMenu2.add(miMatricula);
 
+        miRetiro.setText("Retiro");
+        jMenu2.add(miRetiro);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -55,11 +88,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 701, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 392, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -72,11 +105,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnAlumnos;
+    public javax.swing.JButton btnCursos;
+    public javax.swing.JButton btnMatriculas;
+    public javax.swing.JButton btnRetiro;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     public javax.swing.JMenu mMantenimiento;
     public javax.swing.JMenuItem miAlumno;
     public javax.swing.JMenuItem miCurso;
     public javax.swing.JMenuItem miMatricula;
+    public javax.swing.JMenuItem miRetiro;
+    public javax.swing.JTextField txtAlumnos;
+    public javax.swing.JTextField txtCursos;
+    public javax.swing.JTextField txtMatriculas;
+    public javax.swing.JTextField txtRetiros;
     // End of variables declaration//GEN-END:variables
 }

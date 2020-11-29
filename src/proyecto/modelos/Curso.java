@@ -33,6 +33,26 @@ public class Curso {
         return horas;
     }
 
+    public void setCodCurso(int codCurso) {
+        this.codCurso = codCurso;
+    }
+
+    public void setAsignatura(String asignatura) {
+        this.asignatura = asignatura;
+    }
+
+    public void setCiclo(int ciclo) {
+        this.ciclo = ciclo;
+    }
+
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
+    }
+
+    public void setHoras(int horas) {
+        this.horas = horas;
+    }
+    
     @Override
     public String toString() {
         return "Curso{" + "codCurso=" + codCurso + ", asignatura=" 
@@ -41,10 +61,16 @@ public class Curso {
     }
     
     
-    
     private int codCurso;
     private String asignatura;
     private int ciclo;
     private int creditos;
     private int horas;
+    
+    public static final int PRIMERO = 0;
+    public static final int SEGUNDO = 1;
+    public static final int TERCERO = 2;
+    public static final int CUARTO = 3;
+    public static final int QUINTO = 4;
+    public static final int SEXTO = 5;
 }

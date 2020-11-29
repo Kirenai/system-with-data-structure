@@ -59,8 +59,7 @@ public class ControladorVistaAlumno implements ActionListener {
             try {
                 if (JOptionPane.showConfirmDialog(viewAlumno, "Desea Eliminar al alumno?") == 0) {
                     deleteAlumno();
-                }
-                else {
+                } else {
                     JOptionPane.showMessageDialog(viewAlumno, "No procede");
                     viewAlumno.btnGuardar.setEnabled(true);
                     viewAlumno.btnActualizar.setEnabled(false);
@@ -72,17 +71,19 @@ public class ControladorVistaAlumno implements ActionListener {
                 viewAlumno.btnGuardar.setEnabled(true);
                 viewAlumno.btnActualizar.setEnabled(false);
                 viewAlumno.btnEliminar.setEnabled(false);
+                viewAlumno.txtDNI.setEnabled(true);
                 JOptionPane.showMessageDialog(viewAlumno, ex.getMessage());
             }
         }
     }
 
+    //Agregando alumno
     private void addAlumno() throws Exception {
         int codigo = codigoCorrelativo();
         String nombres = viewAlumno.txtNombres.getText();
         String apellidos = viewAlumno.txtApellidos.getText();
         String dni = viewAlumno.txtDNI.getText();
-        if (!verificarDNI(listAlumno, dni)) {
+        if (!verificarDNI(dni)) {
             throw new Exception("Error dni duplicado");
         }
         int edad = Integer.parseInt(viewAlumno.txtEdad.getText());
@@ -95,6 +96,10 @@ public class ControladorVistaAlumno implements ActionListener {
         clearTextFields();
     }
 
+    /**
+     *
+     * @return Codigo correlativo 20200000 + 1 por alumno
+     */
     private int codigoCorrelativo() {
         if (listAlumno.isEmpty()) {
             return 202010000;
@@ -103,8 +108,14 @@ public class ControladorVistaAlumno implements ActionListener {
         }
     }
 
-    private boolean verificarDNI(List<Alumno> listAlumnos, String dni) {
-        return listAlumnos.stream().noneMatch((alumno) -> (alumno.getDni().equals(dni)));
+    /**
+     *
+     * @param dni Argumento a compar
+     * @return Retorna false si encuentra un DNI repetido en la BBDD fake de
+     * alumno
+     */
+    private boolean verificarDNI(String dni) {
+        return listAlumno.stream().noneMatch((alumno) -> (alumno.getDni().equals(dni)));
     }
 
     private void updateAlumno() {
@@ -138,6 +149,9 @@ public class ControladorVistaAlumno implements ActionListener {
             showDataOnTable();
             clearTextFields();
 
+            viewAlumno.txtDNI.setEnabled(true);
+
+            viewAlumno.btnGuardar.setEnabled(true);
             viewAlumno.btnEliminar.setEnabled(false);
             viewAlumno.btnActualizar.setEnabled(false);
 

@@ -32,6 +32,33 @@ public class Matricula {
     public String getHora() {
         return hora;
     }
+
+    public void setNumMatricula(int numMatricula) {
+        this.numMatricula = numMatricula;
+    }
+
+    public void setCodAlumno(int codAlumno) {
+        this.codAlumno = codAlumno;
+    }
+
+    public void setCodCurso(int codCurso) {
+        this.codCurso = codCurso;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    @Override
+    public String toString() {
+        return "Matricula{" + "numMatricula=" + numMatricula + ", codAlumno=" +
+                codAlumno + ", codCurso=" + codCurso + ", fecha=" + fecha +
+                ", hora=" + hora + '}';
+    }
     
     
     
