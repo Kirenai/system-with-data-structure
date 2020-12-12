@@ -4,7 +4,7 @@ package proyecto.vistas;
 
 public class AlumnoVista extends javax.swing.JFrame {
 
-    
+ 
     public AlumnoVista() {
         initComponents();
     }

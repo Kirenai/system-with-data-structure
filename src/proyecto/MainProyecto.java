@@ -14,7 +14,7 @@ public class MainProyecto {
                 | InstantiationException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
-        MenuPrincipal mainMenu = new MenuPrincipal();
+        MenuPrincipal mainMenu = new MenuPrincipal(); //objeto
         mainMenu.setVisible(true);
         mainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainMenu.setLocationRelativeTo(null);

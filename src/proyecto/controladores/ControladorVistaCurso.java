@@ -4,6 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -74,7 +80,12 @@ public class ControladorVistaCurso implements ActionListener {
             int horas = Integer.parseInt(viewCourse.txtHoras.getText());
             Curso course = new Curso(codigo, asignatura, ciclo, creditos, horas);
             listCourse.add(course);
-
+            
+            try {
+                writeCourse();
+            } catch (IOException ex) {
+            }
+            
             sortedByCode();
             showDataOnTable();
             clearTextFields();
@@ -101,6 +112,11 @@ public class ControladorVistaCurso implements ActionListener {
         
         listCourse.set(indexCourse, course);
 
+        try {
+            writeCourse();
+        } catch (IOException ex) {
+        }
+        
         showDataOnTable();
         clearTextFields();
 
@@ -118,6 +134,12 @@ public class ControladorVistaCurso implements ActionListener {
         if (compareStudentBelongToCourse(listRegistration, codeCourse)) {
             int indexCourse = searchIndex(codeCourse);
             listCourse.remove(indexCourse);
+            
+            try {
+                writeCourse();
+            } catch (IOException ex) {
+            }
+            
             showDataOnTable();
 
             viewCourse.btnGuardar.setEnabled(true);
@@ -196,7 +218,46 @@ public class ControladorVistaCurso implements ActionListener {
                 .sort(Comparator.comparing(code -> code.getCodCurso()));
     }
     
-
+    private void writeCourse() throws IOException {
+        PrintWriter write = new PrintWriter(
+                new FileWriter("cursos.txt")
+        );
+        String linea;
+        for(Curso course: listCourse) {
+            linea = String.format("%s;%s;%s;%s;%s\n", course.getCodCurso(),
+                                    course.getAsignatura(), course.getCiclo(),
+                                    course.getCreditos(), course.getHoras());
+            write.write(linea);
+        }
+        write.close();
+    }
+    
+    public void loadCourses() {
+        String list[];
+        String line;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("cursos.txt"));
+            while ((line = br.readLine()) != null) {
+                list = line.split(";");
+                Curso course = new Curso(Integer.parseInt(list[0]), list[1], 
+                                Integer.parseInt(list[2]), Integer.parseInt(list[3]),
+                                Integer.parseInt(list[4])
+                );
+                listCourse.add(course);
+            }
+            br.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Error E/S: " + e.getMessage());
+            
+        } catch (IOException ex) {
+            System.out.println("Error E/S: " + ex.getMessage());
+        }
+    }
+    
+    public void clearListStudents() {
+        listCourse.clear();
+    }
+    
     public static List<Curso> getListCourse() {
         return listCourse;
     }

@@ -143,7 +143,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        ControladorMenuPrincipal controladorMaiMenu = new ControladorMenuPrincipal(this);
+        ControladorMenuPrincipal controladorMaiMenu = new ControladorMenuPrincipal(this); //objeto
     }//GEN-LAST:event_formWindowOpened
 
     

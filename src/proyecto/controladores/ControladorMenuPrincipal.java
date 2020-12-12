@@ -48,7 +48,7 @@ public class ControladorMenuPrincipal implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (mainMenu.miAlumno == e.getSource()) {
-            AlumnoVista viewAlumno = new AlumnoVista();
+            AlumnoVista viewAlumno = new AlumnoVista(); //objeto
             viewAlumno.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             viewAlumno.setVisible(true);
             viewAlumno.setLocationRelativeTo(null);
@@ -57,12 +57,15 @@ public class ControladorMenuPrincipal implements ActionListener {
             viewAlumno.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowOpened(WindowEvent e) {
-                    new ControladorVistaAlumno(viewAlumno).showDataOnTable();
+                    ControladorVistaAlumno controladorVistaAlumno = 
+                            new ControladorVistaAlumno(viewAlumno);
+                    controladorVistaAlumno.clearListStudents();
+                    controladorVistaAlumno.loadStudents();
+                    controladorVistaAlumno.showDataOnTable();
 
                     viewAlumno.btnActualizar.setEnabled(false);
                     viewAlumno.btnEliminar.setEnabled(false);
                 }
-
             });
         } else if (mainMenu.miCurso == e.getSource()) {
             CursoVista viewCourse = new CursoVista();
@@ -74,8 +77,10 @@ public class ControladorMenuPrincipal implements ActionListener {
             viewCourse.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowOpened(WindowEvent e) {
-                    new ControladorVistaCurso(viewCourse).showDataOnTable();
-
+                    ControladorVistaCurso controladorVistaCurso = 
+                            new ControladorVistaCurso(viewCourse);
+                    controladorVistaCurso.loadCourses();
+                    controladorVistaCurso.showDataOnTable();
                     viewCourse.btnActualizar.setEnabled(false);
                     viewCourse.btnEliminar.setEnabled(false);
                 }

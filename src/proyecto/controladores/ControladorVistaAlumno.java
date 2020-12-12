@@ -1,6 +1,12 @@
 package proyecto.controladores;
 
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -11,7 +17,7 @@ public class ControladorVistaAlumno implements ActionListener {
 
     public ControladorVistaAlumno(AlumnoVista viewAlumno) {
         this.viewAlumno = viewAlumno;
-
+        
         addEvents();
     }
 
@@ -88,7 +94,9 @@ public class ControladorVistaAlumno implements ActionListener {
         int estado = Integer.parseInt(viewAlumno.txtEstado.getText());
         Alumno alumno = new Alumno(codigo, nombres, apellidos, dni, edad, celular, estado);
         listAlumno.add(alumno);
-
+        
+        writeStudents();
+        
         showDataOnTable();
         clearTextFields();
     }
@@ -108,11 +116,18 @@ public class ControladorVistaAlumno implements ActionListener {
     /**
      *
      * @param dni Argumento a compar
-     * @return Retorna false si encuentra un DNI repetido en la BBDD fake de
-     * alumno
+     * @return Retorna false si encuentra un DNI repetido en la BBDD fake de alumno
+     * 
      */
     private boolean verificarDNI(String dni) {
-        return listAlumno.stream().noneMatch((alumno) -> (alumno.getDni().equals(dni)));
+//        for (Alumno alumno : listAlumno) {
+//            if (alumno.getDni().equals(dni)) {
+//                return false;
+//            }
+//        }
+//        return true;
+        return listAlumno.stream()
+                .noneMatch((alumno) -> (alumno.getDni().equals(dni)));
     }
 
     private void updateAlumno() {
@@ -128,7 +143,12 @@ public class ControladorVistaAlumno implements ActionListener {
 
         int indexAlumno = searchIndex(codigo);
         listAlumno.set(indexAlumno, alumno);
-
+        
+        try {
+            writeStudents();
+        } catch (IOException e) {
+        }
+        
         showDataOnTable();
         clearTextFields();
 
@@ -142,7 +162,9 @@ public class ControladorVistaAlumno implements ActionListener {
         if (estado == 0) {
             int indexAlumno = searchIndex(Integer.parseInt(viewAlumno.txtCodigo.getText()));
             listAlumno.remove(indexAlumno);
-
+            
+            writeStudents();
+            
             showDataOnTable();
             clearTextFields();
 
@@ -183,9 +205,9 @@ public class ControladorVistaAlumno implements ActionListener {
     private int searchIndex(int codigo) {
         int index = -1;
         int bound = listAlumno.size();
-        for (int userInd = 0; userInd < bound; userInd++) {
-            if (listAlumno.get(userInd).getCodAlumno() == codigo) {
-                index = userInd;
+        for (int i = 0; i < bound; i++) {
+            if (listAlumno.get(i).getCodAlumno() == codigo) {
+                index = i;
                 break;
             }
         }
@@ -200,6 +222,46 @@ public class ControladorVistaAlumno implements ActionListener {
         viewAlumno.txtEdad.setText("");
         viewAlumno.txtCelular.setText("");
         viewAlumno.txtEstado.setText("");
+    }
+    
+    private void writeStudents() throws IOException {
+        PrintWriter write = new PrintWriter(
+                new FileWriter("alumnos.txt")
+        );
+        String linea;
+        for(Alumno student: listAlumno) {
+            linea = String.format("%s;%s;%s;%s;%s;%s;%s\n", student.getCodAlumno(),
+                                        student.getNombre(), student.getApellidos(),
+                                        student.getDni(), student.getEdad(), 
+                                        student.getCelular(), student.getEstado());
+            write.write(linea);
+        }
+        write.close();
+    }
+    
+    public void loadStudents() {
+        String list[];
+        String line;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("alumnos.txt"));
+            while ((line = br.readLine()) != null) {
+                list = line.split(";");
+                Alumno student = new Alumno(Integer.parseInt(list[0]), list[1], 
+                        list[2], list[3], Integer.parseInt(list[4]), 
+                        Integer.parseInt(list[5]), Integer.parseInt(list[6])
+                );
+                listAlumno.add(student);
+            }
+            br.close();
+        } catch (FileNotFoundException e) {
+            
+        } catch (IOException ex) {
+        }
+        
+    }
+    
+    public void clearListStudents() {
+        listAlumno.clear();
     }
 
     public static List<Alumno> getListAlumno() {
