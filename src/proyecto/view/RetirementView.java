@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.vistas;
+package proyecto.view;
 
 /**
  *
  * @author Kire
  */
-public class RetiroVista extends javax.swing.JFrame {
+public class RetirementView extends javax.swing.JFrame {
 
     /**
      * Creates new form RetiroVista
      */
-    public RetiroVista() {
+    public RetirementView() {
         initComponents();
     }
 
@@ -29,15 +29,15 @@ public class RetiroVista extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txtNumRetiro = new javax.swing.JTextField();
+        txtRetirementNumber = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableRetiro = new javax.swing.JTable();
-        txtNumMatricula = new javax.swing.JTextField();
+        tableRetirement = new javax.swing.JTable();
+        txtEnrollmentNumber = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,13 +45,13 @@ public class RetiroVista extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Número Retiro");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
-        jPanel1.add(txtNumRetiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 95, 110, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+        jPanel1.add(txtRetirementNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 105, 110, -1));
 
         jLabel1.setText("Adicionar");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
 
-        tableRetiro.setModel(new javax.swing.table.DefaultTableModel(
+        tableRetirement.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -62,22 +62,22 @@ public class RetiroVista extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tableRetiro);
+        jScrollPane1.setViewportView(tableRetirement);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, 370));
-        jPanel1.add(txtNumMatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 135, 110, -1));
+        jPanel1.add(txtEnrollmentNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 145, 110, -1));
 
         jLabel4.setText("Número Matricula");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
-        btnGuardar.setText("Guardar");
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        btnSave.setText("Guardar");
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
-        btnEliminar.setText("Eliminar");
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
+        btnDelete.setText("Eliminar");
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
 
-        jButton2.setText("Actualizar");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+        btnUpdate.setText("Actualizar");
+        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,16 +94,16 @@ public class RetiroVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnGuardar;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JButton btnDelete;
+    public javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tableRetiro;
-    public javax.swing.JTextField txtNumMatricula;
-    public javax.swing.JTextField txtNumRetiro;
+    public javax.swing.JTable tableRetirement;
+    public javax.swing.JTextField txtEnrollmentNumber;
+    public javax.swing.JTextField txtRetirementNumber;
     // End of variables declaration//GEN-END:variables
 }

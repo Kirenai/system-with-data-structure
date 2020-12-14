@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.vistas;
+package proyecto.view;
 
 /**
  *
  * @author Kire
  */
-public class CursoVista extends javax.swing.JFrame {
+public class CourseView extends javax.swing.JFrame {
 
     /**
      * Creates new form CursoVista
      */
-    public CursoVista() {
+    public CourseView() {
         initComponents();
     }
 
@@ -30,20 +30,20 @@ public class CursoVista extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
-        txtAsignatura = new javax.swing.JTextField();
+        txtCode = new javax.swing.JTextField();
+        txtSubject = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtCiclo = new javax.swing.JTextField();
-        txtCreditos = new javax.swing.JTextField();
+        txtCycle = new javax.swing.JTextField();
+        txtCredits = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtHoras = new javax.swing.JTextField();
+        txtHours = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableCurso = new javax.swing.JTable();
-        btnGuardar = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        tableCourse = new javax.swing.JTable();
+        btnSave = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,25 +55,25 @@ public class CursoVista extends javax.swing.JFrame {
 
         jLabel3.setText("Código");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
-        jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 110, -1));
-        jPanel1.add(txtAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 125, 110, -1));
+        jPanel1.add(txtCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 110, -1));
+        jPanel1.add(txtSubject, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 125, 110, -1));
 
         jLabel4.setText("Asignatura");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
         jLabel5.setText("Ciclo");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
-        jPanel1.add(txtCiclo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 165, 110, -1));
-        jPanel1.add(txtCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 205, 110, -1));
+        jPanel1.add(txtCycle, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 165, 110, -1));
+        jPanel1.add(txtCredits, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 205, 110, -1));
 
         jLabel6.setText("N° de creditos");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
-        jPanel1.add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 245, 110, -1));
+        jPanel1.add(txtHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 245, 110, -1));
 
         jLabel7.setText("Cantidad de horas");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
-        tableCurso.setModel(new javax.swing.table.DefaultTableModel(
+        tableCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -84,18 +84,18 @@ public class CursoVista extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tableCurso);
+        jScrollPane1.setViewportView(tableCourse);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, 370));
 
-        btnGuardar.setText("Guardar");
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+        btnSave.setText("Guardar");
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
 
-        btnActualizar.setText("Actualizar");
-        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
+        btnUpdate.setText("Actualizar");
+        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
 
-        btnEliminar.setText("Eliminar");
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, -1, -1));
+        btnDelete.setText("Eliminar");
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,9 +112,9 @@ public class CursoVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnActualizar;
-    public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnGuardar;
+    public javax.swing.JButton btnDelete;
+    public javax.swing.JButton btnSave;
+    public javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -123,11 +123,11 @@ public class CursoVista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tableCurso;
-    public javax.swing.JTextField txtAsignatura;
-    public javax.swing.JTextField txtCiclo;
-    public javax.swing.JTextField txtCodigo;
-    public javax.swing.JTextField txtCreditos;
-    public javax.swing.JTextField txtHoras;
+    public javax.swing.JTable tableCourse;
+    public javax.swing.JTextField txtCode;
+    public javax.swing.JTextField txtCredits;
+    public javax.swing.JTextField txtCycle;
+    public javax.swing.JTextField txtHours;
+    public javax.swing.JTextField txtSubject;
     // End of variables declaration//GEN-END:variables
 }

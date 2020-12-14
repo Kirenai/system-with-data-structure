@@ -1,7 +1,7 @@
 package proyecto;
 
 import javax.swing.*;
-import proyecto.vistas.MenuPrincipal;
+import proyecto.view.MainMenuView;
 
 public class MainProyecto {
     
@@ -14,10 +14,10 @@ public class MainProyecto {
                 | InstantiationException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
-        MenuPrincipal mainMenu = new MenuPrincipal(); //objeto
-        mainMenu.setVisible(true);
-        mainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainMenu.setLocationRelativeTo(null);
-        mainMenu.setTitle("App proyecto");
+        MainMenuView viewMenu = new MainMenuView(); //objeto
+        viewMenu.setVisible(true);
+        viewMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        viewMenu.setLocationRelativeTo(null);
+        viewMenu.setTitle("App proyecto");
     }
 }

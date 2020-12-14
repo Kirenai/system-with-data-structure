@@ -12,7 +12,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="miAlumno">
+            <MenuItem class="javax.swing.JMenuItem" name="miStudent">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alumno"/>
               </Properties>
@@ -20,7 +20,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="miCurso">
+            <MenuItem class="javax.swing.JMenuItem" name="miCourse">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Curso"/>
               </Properties>
@@ -35,7 +35,7 @@
             <Property name="text" type="java.lang.String" value="Registro"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="miMatricula">
+            <MenuItem class="javax.swing.JMenuItem" name="miEnrollment">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Matr&#xed;cula"/>
               </Properties>
@@ -43,7 +43,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="miRetiro">
+            <MenuItem class="javax.swing.JMenuItem" name="miRetirement">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Retiro"/>
               </Properties>
@@ -125,7 +125,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="btnReporteAlumno">
+            <Component class="javax.swing.JButton" name="btnReportPendingEnrollment">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte"/>
               </Properties>
@@ -138,7 +138,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="btnReporteCurso">
+            <Component class="javax.swing.JButton" name="btnReportEnrollmentCourse">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte"/>
               </Properties>
@@ -151,7 +151,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="btnReporteMatriculas">
+            <Component class="javax.swing.JButton" name="btnReportCurrentEnrollment">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reporte "/>
               </Properties>
@@ -222,7 +222,7 @@
             <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txtCursos">
+            <Component class="javax.swing.JTextField" name="txtQueryCourse">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
@@ -235,7 +235,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtAlumnos">
+            <Component class="javax.swing.JTextField" name="txtQueryStudent">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
@@ -248,7 +248,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAlumnos">
+            <Component class="javax.swing.JButton" name="btnQueryStudents">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta Alumnos"/>
               </Properties>
@@ -261,7 +261,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="btnCursos">
+            <Component class="javax.swing.JButton" name="btnQueryCourses">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta Cursos"/>
               </Properties>
@@ -274,7 +274,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMatriculas">
+            <Component class="javax.swing.JTextField" name="txtQueryEnrollment">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
@@ -287,7 +287,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="btnMatriculas">
+            <Component class="javax.swing.JButton" name="btnQueryEnrollment">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta Matr&#xed;culas"/>
               </Properties>
@@ -300,7 +300,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtRetiros">
+            <Component class="javax.swing.JTextField" name="txtQueryRetirement">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
@@ -313,7 +313,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="btnRetiro">
+            <Component class="javax.swing.JButton" name="btnQueryRetirement">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta Retiros"/>
               </Properties>

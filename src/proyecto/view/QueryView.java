@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto.vistas;
+package proyecto.view;
 
 /**
  *
  * @author Kire
  */
-public class ConsultasVista extends javax.swing.JFrame {
+public class QueryView extends javax.swing.JFrame {
 
     /**
      * Creates new form ConsultasVista
      */
-    public ConsultasVista() {
+    public QueryView() {
         initComponents();
     }
 
@@ -29,13 +29,13 @@ public class ConsultasVista extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        taConsulta = new javax.swing.JTextArea();
+        taQuery = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        taConsulta.setColumns(20);
-        taConsulta.setRows(5);
-        jScrollPane1.setViewportView(taConsulta);
+        taQuery.setColumns(20);
+        taQuery.setRows(5);
+        jScrollPane1.setViewportView(taQuery);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,6 +72,6 @@ public class ConsultasVista extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextArea taConsulta;
+    public javax.swing.JTextArea taQuery;
     // End of variables declaration//GEN-END:variables
 }
